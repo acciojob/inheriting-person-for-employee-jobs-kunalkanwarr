@@ -1,16 +1,59 @@
 <!DOCTYPE html>
-
-<html>
-
+<html lang="en">
 <head>
-	<link rel="stylesheet" href="styles.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Person and Employee</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        button {
+            margin: 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
 </head>
-
 <body>
-	<!-- the entire body must be written by student -->
-    <script type="text/javascript" src="./script.js">
-</script>
+    <h1>Person and Employee Demo</h1>
+    <button onclick="createPerson()">Create Person</button>
+    <button onclick="createEmployee()">Create Employee</button>
+    
+    <script>
+        class Person {
+            constructor(name, age) {
+                this.name = name;
+                this.age = age;
+            }
 
+            greet() {
+                console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+            }
+        }
+
+        class Employee extends Person {
+            constructor(name, age, jobTitle) {
+                super(name, age);
+                this.jobTitle = jobTitle;
+            }
+
+            jobGreet() {
+                console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+            }
+        }
+
+        function createPerson() {
+            const person = new Person("Alice", 25);
+            person.greet();
+        }
+
+        function createEmployee() {
+            const employee = new Employee("Bob", 30, "Manager");
+            employee.jobGreet();
+        }
+    </script>
 </body>
-
 </html>
