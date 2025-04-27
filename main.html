@@ -3,85 +3,56 @@
 <head>
   <meta charset="UTF-8">
   <title>Person and Employee Classes</title>
-  <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f0f8ff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-    }
-
-    .container {
-      text-align: center;
-      background: white;
-      padding: 30px 50px;
-      border-radius: 10px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    }
-
-    button {
-      margin: 10px;
-      padding: 10px 20px;
-      font-size: 16px;
-      background-color: #4CAF50;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #45a049;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="container">
     <h1>Person and Employee Greeting</h1>
     <button id="personBtn">Greet as Person</button>
     <button id="employeeBtn">Greet as Employee</button>
+    <div id="output"></div>
   </div>
 
+  <!-- Important: script should be at the end, after HTML loads -->
   <script>
-    // Person class
-    class Person {
-      constructor(name, age) {
-        this.name = name;
-        this.age = age;
-      }
+	  // Correct: define classes first
+class Person {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
 
-      greet() {
-        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
-      }
-    }
+  greet() {
+    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
+    document.getElementById('output').innerText = `Hello, my name is ${this.name}, I am ${this.age} years old.`;
+  }
+}
 
-    // Employee class inheriting from Person
-    class Employee extends Person {
-      constructor(name, age, jobTitle) {
-        super(name, age);
-        this.jobTitle = jobTitle;
-      }
+class Employee extends Person {
+  constructor(name, age, jobTitle) {
+    super(name, age); // super() MUST be called before using this
+    this.jobTitle = jobTitle;
+  }
 
-      jobGreet() {
-        console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
-      }
-    }
+  jobGreet() {
+    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
+    document.getElementById('output').innerText = `Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`;
+  }
+}
 
-    // Create instances
-    const person = new Person("Alice", 25);
-    const employee = new Employee("Bob", 30, "Manager");
+// Correct: create instances after defining classes
+const person = new Person("Alice", 25);
+const employee = new Employee("Bob", 30, "Manager");
 
-    // Add event listeners to buttons
-    document.getElementById('personBtn').addEventListener('click', () => {
-      person.greet();
-    });
+// Correct: add event listeners AFTER the DOM is ready
+document.getElementById('personBtn').addEventListener('click', () => {
+  person.greet();
+});
 
-    document.getElementById('employeeBtn').addEventListener('click', () => {
-      employee.jobGreet();
-    });
+document.getElementById('employeeBtn').addEventListener('click', () => {
+  employee.jobGreet();
+});
+
   </script>
 </body>
 </html>
