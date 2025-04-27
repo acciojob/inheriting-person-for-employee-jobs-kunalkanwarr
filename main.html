@@ -1,86 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To-Do App with Person & Employee</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 50px;
-        }
-        button {
-            margin: 10px;
-            padding: 10px 20px;
-            font-size: 16px;
-        }
-        ul {
-            list-style-type: none;
-            padding: 0;
-        }
-        li {
-            padding: 10px;
-            border: 1px solid #ddd;
-            margin-top: 5px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Person and Employee Classes</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <h1>To-Do App with Person & Employee</h1>
-    <input type="text" id="taskInput" placeholder="Enter a task">
-    <button onclick="addTask()">Add Task</button>
-    <ul id="taskList"></ul>
-    
-    <button onclick="createPerson()">Create Person</button>
-    <button onclick="createEmployee()">Create Employee</button>
-    
-    <script>
-        window.onload = function() {
-            class Person {
-                constructor(name, age) {
-                    this.name = name;
-                    this.age = age;
-                }
+  <div class="container">
+    <h1>Person and Employee Greeting</h1>
+    <button id="personBtn">Greet as Person</button>
+    <button id="employeeBtn">Greet as Employee</button>
+  </div>
 
-                greet() {
-                    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old.`);
-                }
-            }
-
-            class Employee extends Person {
-                constructor(name, age, jobTitle) {
-                    super(name, age);
-                    this.jobTitle = jobTitle;
-                }
-
-                jobGreet() {
-                    console.log(`Hello, my name is ${this.name}, I am ${this.age} years old, and my job title is ${this.jobTitle}.`);
-                }
-            }
-
-            window.createPerson = function() {
-                const person = new Person("Alice", 25);
-                person.greet();
-            };
-
-            window.createEmployee = function() {
-                const employee = new Employee("Bob", 30, "Manager");
-                employee.jobGreet();
-            };
-        };
-
-        function addTask() {
-            const taskInput = document.getElementById("taskInput");
-            const taskText = taskInput.value.trim();
-            if (taskText === "") return;
-            
-            const taskList = document.getElementById("taskList");
-            const li = document.createElement("li");
-            li.textContent = taskText;
-            taskList.appendChild(li);
-            taskInput.value = "";
-        }
-    </script>
+  <script src="script.js"></script>
 </body>
 </html>

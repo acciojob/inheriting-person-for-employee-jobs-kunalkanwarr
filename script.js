@@ -13,7 +13,7 @@ class Person {
 // Employee class inheriting from Person
 class Employee extends Person {
   constructor(name, age, jobTitle) {
-    super(name, age); // Call the parent class constructor
+    super(name, age);
     this.jobTitle = jobTitle;
   }
 
@@ -22,14 +22,15 @@ class Employee extends Person {
   }
 }
 
-// Example usage:
-
-// Creating a Person instance
+// Create instances
 const person = new Person("Alice", 25);
-person.greet();
-// Output: Hello, my name is Alice, I am 25 years old.
-
-// Creating an Employee instance
 const employee = new Employee("Bob", 30, "Manager");
-employee.jobGreet();
-// Output: Hello, my name is Bob, I am 30 years old, and my job title is Manager.
+
+// Add event listeners to buttons
+document.getElementById('personBtn').addEventListener('click', () => {
+  person.greet();
+});
+
+document.getElementById('employeeBtn').addEventListener('click', () => {
+  employee.jobGreet();
+});
